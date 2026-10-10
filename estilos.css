@@ -1,0 +1,592 @@
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --azul: #101b35;
+    --azul-claro: #1c2b4c;
+    --dorado: #d6b66b;
+    --blanco: #ffffff;
+    --gris: #f3f5f8;
+    --texto: #454d5c;
+    --borde: #e2e6ed;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--texto);
+    line-height: 1.7;
+    background: var(--blanco);
+}
+
+.contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.encabezado {
+    background: var(--azul);
+    color: var(--blanco);
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px #00000015;
+}
+
+.logo {
+    color: var(--blanco);
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--dorado);
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.menu a {
+    position: relative;
+    color: var(--blanco);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover,
+.menu a.activo {
+    color: var(--dorado);
+}
+
+.menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: var(--dorado);
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after,
+.menu a.activo::after {
+    width: 100%;
+}
+
+/* =========================
+   PORTADA
+========================= */
+
+.portada {
+    min-height: 540px;
+    padding: 80px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+    overflow: hidden;
+    background:
+        linear-gradient(100deg, #101b35f7, #101b35df),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
+    color: var(--blanco);
+}
+
+.portada-contenido {
+    max-width: 700px;
+    animation: aparecer 0.8s ease;
+}
+
+.etiqueta,
+.subtitulo {
+    color: var(--dorado);
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.portada h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    line-height: 1.2;
+    margin: 20px 0;
+}
+
+.portada h1 span {
+    color: var(--dorado);
+}
+
+.portada-contenido > p:not(.etiqueta) {
+    color: #e1e5ee;
+    max-width: 600px;
+    margin-bottom: 28px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 12px 23px;
+    border-radius: 5px;
+    background: var(--dorado);
+    color: var(--azul);
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.boton:hover {
+    background: var(--blanco);
+    transform: translateY(-3px);
+}
+
+/* Símbolo decorativo ECLIPSE */
+
+.logo-eclipse {
+    width: 250px;
+    height: 250px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.letra-e {
+    width: 105px;
+    height: 105px;
+    display: grid;
+    place-items: center;
+    border: 2px solid var(--dorado);
+    border-radius: 50%;
+    color: var(--dorado);
+    font-size: 55px;
+    font-weight: bold;
+    background: var(--azul);
+    box-shadow: 0 0 35px #d6b66b35;
+    z-index: 2;
+}
+
+.orbita {
+    position: absolute;
+    border: 1px solid #d6b66b70;
+    border-radius: 50%;
+}
+
+.orbita-uno {
+    width: 155px;
+    height: 155px;
+}
+
+.orbita-dos {
+    width: 220px;
+    height: 220px;
+    border-style: dashed;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+.seccion {
+    padding: 80px 9%;
+    text-align: center;
+    scroll-margin-top: 85px;
+}
+
+.seccion h2 {
+    color: var(--azul);
+    font-size: clamp(28px, 4vw, 36px);
+    line-height: 1.3;
+    margin: 10px 0 20px;
+}
+
+.descripcion {
+    max-width: 780px;
+    margin: 0 auto 38px;
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 23px;
+    margin-top: 35px;
+    text-align: left;
+}
+
+.tarjeta {
+    padding: 28px;
+    background: var(--blanco);
+    border: 1px solid var(--borde);
+    border-radius: 11px;
+    box-shadow: 0 7px 22px #101b3509;
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px);
+    border-color: var(--dorado);
+    box-shadow: 0 12px 28px #101b3515;
+}
+
+.numero,
+.icono {
+    display: inline-grid;
+    place-items: center;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 18px;
+    border-radius: 9px;
+    background: #d6b66b25;
+    color: #98752b;
+    font-weight: bold;
+}
+
+.tarjeta h3 {
+    color: var(--azul);
+    font-size: 19px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.tarjeta p {
+    font-size: 14px;
+}
+
+/* =========================
+   ACCESO Y PASOS
+========================= */
+
+.acceso {
+    background: var(--gris);
+}
+
+.pasos {
+    max-width: 800px;
+    margin: 40px auto 0;
+    text-align: left;
+}
+
+.paso {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 23px;
+    margin-bottom: 16px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    background: var(--blanco);
+    transition: border-color 0.3s ease;
+}
+
+.paso:hover {
+    border-color: var(--dorado);
+}
+
+.paso-numero {
+    display: grid;
+    place-items: center;
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--azul);
+    color: var(--dorado);
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.paso h3 {
+    color: var(--azul);
+    margin-bottom: 5px;
+}
+
+/* =========================
+   MÓDULOS DEL SISTEMA
+========================= */
+
+.modulos {
+    background: var(--blanco);
+}
+
+.tarjetas-modulos {
+    align-items: stretch;
+}
+
+.modulo {
+    display: flex;
+    flex-direction: column;
+    border-top: 3px solid var(--dorado);
+}
+
+.modulo p {
+    margin-bottom: 17px;
+}
+
+.modulo ul {
+    padding-left: 19px;
+    margin-top: 4px;
+    font-size: 13px;
+}
+
+.modulo li {
+    margin-bottom: 9px;
+}
+
+.modulo li::marker {
+    color: #b18e42;
+}
+
+/* =========================
+   RECOMENDACIONES
+========================= */
+
+.recomendaciones {
+    background: var(--gris);
+}
+
+.lista-recomendaciones {
+    max-width: 760px;
+    margin: 35px auto 0;
+    text-align: left;
+}
+
+.lista-recomendaciones p {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--borde);
+}
+
+.lista-recomendaciones span {
+    color: #9a782e;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+/* =========================
+   AYUDA
+========================= */
+
+.ayuda {
+    background: var(--blanco);
+}
+
+.ayuda .boton {
+    margin-top: 5px;
+}
+
+/* =========================
+   PIE DE PÁGINA
+========================= */
+
+.pie {
+    padding: 35px 20px;
+    text-align: center;
+    background: var(--azul);
+    color: #dce1ec;
+}
+
+.pie .logo {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.pie p {
+    font-size: 13px;
+    margin-top: 7px;
+}
+
+.equipo-footer {
+    color: #b8c1d1;
+}
+
+/* =========================
+   ANIMACIÓN
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   TABLETAS
+========================= */
+
+@media (max-width: 950px) {
+    .portada {
+        padding: 70px 7%;
+    }
+
+    .logo-eclipse {
+        width: 190px;
+        height: 190px;
+    }
+
+    .letra-e {
+        width: 85px;
+        height: 85px;
+        font-size: 45px;
+    }
+
+    .orbita-uno {
+        width: 130px;
+        height: 130px;
+    }
+
+    .orbita-dos {
+        width: 180px;
+        height: 180px;
+    }
+
+    .seccion {
+        padding: 65px 6%;
+    }
+
+    .tarjetas {
+        gap: 17px;
+    }
+
+    .tarjeta {
+        padding: 23px;
+    }
+}
+
+/* =========================
+   CELULARES
+========================= */
+
+@media (max-width: 700px) {
+    .encabezado {
+        flex-direction: column;
+        gap: 14px;
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 17px;
+    }
+
+    .menu a {
+        font-size: 13px;
+    }
+
+    .portada {
+        min-height: auto;
+        padding: 65px 7%;
+    }
+
+    .portada h1 {
+        font-size: clamp(32px, 8vw, 44px);
+    }
+
+    .logo-eclipse {
+        display: none;
+    }
+
+    .seccion {
+        padding: 55px 7%;
+        scroll-margin-top: 120px;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .tarjeta {
+        padding: 25px;
+    }
+
+    .paso {
+        gap: 14px;
+        padding: 18px;
+    }
+
+    .paso-numero {
+        width: 37px;
+        height: 37px;
+    }
+
+    .portada h1 {
+        line-height: 1.2;
+    }
+}
+
+/* =========================
+   CELULARES PEQUEÑOS
+========================= */
+
+@media (max-width: 380px) {
+    .menu {
+        gap: 11px;
+    }
+
+    .menu a {
+        font-size: 12px;
+    }
+
+    .portada h1 {
+        font-size: 31px;
+    }
+
+    .tarjeta {
+        padding: 21px;
+    }
+}
+
+/* Reducir movimiento si el usuario lo prefiere */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
